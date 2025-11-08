@@ -67,16 +67,16 @@ The colour bars below correspond to flow speed. Images have been resized for rea
 
 ### Local (central cavity) recirculating flow visualisation
 
-<img src="https://github.com/user-attachments/assets/829aa146-ef8d-4bc0-8b4f-1ede7e014ec1" alt="Local recirculating flow" width="480" />
+<img src="https://github.com/user-attachments/assets/7dc685b6-9486-4e58-9987-c18e42ddad02" alt="Local recirculating flow" width="480" />
 
 ### Top-down view of placental geometry with path lines via particle tracking
 
-<img src="https://github.com/user-attachments/assets/48ae1125-39cc-45e4-9ff1-70268b9df0e6" alt="Top-down view with path lines" width="480" />
+<img src="https://github.com/user-attachments/assets/12ac4590-cc69-45d9-a4be-e9f9bc2501be" alt="Top-down view with path lines" width="480" />
 
 ### As above with side-on view
 
-<img src="https://github.com/user-attachments/assets/71ff0b4e-6cb4-4424-a67e-f0a67b2ac1ae" alt="Side-on view" width="480" />
+<img src="https://github.com/user-attachments/assets/adbba018-7e75-493b-a4c7-dccfc1280d18" alt="Side-on view" width="480" />
 
 ### Flow field in placental geometry with a non-symmetrical moving boundary (contraction)
 
-<img src="https://github.com/user-attachments/assets/b98cd791-1ed4-43a5-9a0e-0212b244475d" alt="Non-symmetrical moving boundary" width="480" />
+<img src="https://github.com/user-attachments/assets/66fe0c4b-1a1d-4a38-bf59-d1101193d750" alt="Non-symmetrical moving boundary" width="480" />
