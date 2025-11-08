@@ -1,0 +1,110 @@
+# ==========================================================
+# Aptofem Control File
+# ==========================================================
+aptofem_help .false.
+aptofem_pause_code .true.
+aptofem_no_openmp_threads 2
+# ==========================================================
+>>> User_data
+interior_penalty_parameter 10.0
+
+# NS Solvers:
+# = Full System ==============================
+#! Points to section for solvers
+ns_solver_section solver_full_system
+#! Points to space definition
+fe_solution_section FE_Solution_full_system
+
+#rho 0.001
+#mu 0.0035
+#permeability_reciprocal 1.0e8
+Re 908.572
+Da_reciprocal 10000.0
+
+# t_scaling comes from nondimenionalisation 
+# 	due to increasing char. vel. (T = L / V)
+t_scaling 2.0
+
+backflow_stab_parameter 0.0
+
+# ==========================================================
+>>> Mesh_gen
+# Options for geom
+
+problem_dim 3
+
+mesh_file_name mesh.msh
+mesh_file_dir ../data/
+
+#curved_bdry_poly 1
+#quadrature_rule gauss_leg_tensor_prod
+# ==========================================================
+>>> Surface_mesh
+surf_mesh_bdry_ids [1]
+# ==========================================================
+>>> FE_Solution_full_system
+fe_space DG(q,1,1,1,0;region=1)
+>>> FE_Adv_Solution
+fe_space DG(q,1)
+# ==========================================================
+>>> solver_full_system
+solver_type bdf_timestepping
+
+#! Solver for BDF system
+bdf_solver_type newton
+fsi_bdf_solver_type newton
+
+# BDF options
+bdf_order 2
+bdf_initial_time 0.0
+# cycle 0.7s becomes 2 * 0.7s / char_T (s)
+bdf_final_time 42.0
+bdf_number_of_timesteps 140
+bdf_output_min_step_no 70
+bdf_semi_implicit .TRUE.
+
+#! Optional
+debug_iterative_bdf_output .false.
+bdf_stop_at_steady_state .false.
+bdf_steady_state_tolerance 1.0e-3
+bdf_output .true.
+bdf_output_frequency 1
+bdf_output_section_name Output_mesh_solution
+
+#FSI BDF options
+#Overwrites bdf_solver_type
+fsi_iterative_scheme .FALSE.
+debug_iterative_bdf_output .FALSE.
+fsi_bdf_store_extra_solutions 0
+# Need to make /restart/ directory for this beforehand
+fsi_bdf_solution_restart .TRUE.
+
+# Newton options
+damping_strategy incremental
+minimum_damping 0.01
+initial_damping 1.0
+damping_increment 0.2
+newton_itns_max 10
+newton_tolerance 1.0d-2
+
+# For coupled problems, linear_solve is an array with size computed_solns
+linear_solver petsc
+
+quadrature_inc 2
+# ==========================================================
+>>> Output_data
+terminal_output on
+output_directory ./output/
+append_filename NS
+output_file_titles both
+# ==========================================================
+>>> Output_mesh_solution
+output_directory ./output/
+append_filename navier
+fe_output fe_solution
+fe_output_file_type vtk
+variable_1 u
+variable_2 v
+variable_3 w
+variable_4 p
+# ==========================================================

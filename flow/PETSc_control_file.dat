@@ -1,0 +1,48 @@
+### LSC preconditioner ###
+
+###Outer Krylov solvers, FGMRES right preconditioning by default
+-ksp_type fgmres
+
+###Splitting options
+-pc_type fieldsplit
+-pc_fieldsplit_detect_saddle_point
+-pc_fieldsplit_type schur
+-pc_fieldsplit_schur_fact_type full
+-pc_fieldsplit_schur_precondition selfp
+
+-fieldsplit_0_pc_type asm
+-fieldsplit_0_ksp_type preonly
+
+###PC for bottom right block
+-fieldsplit_1_ksp_type fgmres
+-fieldsplit_1_pc_type lsc
+    -fieldsplit_1_lsc_ksp_type fgmres
+    -fieldsplit_1_lsc_pc_type hypre
+    -fieldsplit_1_lsc_pc_hypre_type boomeramg
+	-fieldsplit_1_lsc_pc_hypre_boomeramg_cycle_type V
+        -fieldsplit_1_lsc_pc_hypre_boomeramg_smooth_type ParaSails
+	-fieldsplit_1_lsc_pc_hypre_boomeramg_coarsen_type Falgout
+	-fieldsplit_1_lsc_pc_hypre_boomeramg_measure_type global
+	-fieldsplit_1_lsc_pc_hypre_boomeramg_relax_type_all symmetric-SOR/Jacobi
+	-fieldsplit_1_lsc_pc_hypre_boomeramg_relax_type_coarse symmetric-SOR/Jacobi
+	
+    -fieldsplit_1_lsc_pc_hypre_boomeramg_strong_threshold 0.4
+	-fieldsplit_1_lsc_pc_hypre_boomeramg_max_levels 25
+	-fieldsplit_1_lsc_pc_hypre_boomeramg_smooth_num_levels 25
+	-fieldsplit_1_lsc_pc_hypre_boomeramg_max_iter 1
+	-fieldsplit_1_lsc_pc_hypre_boomeramg_agg_nl 1
+	-fieldsplit_1_lsc_pc_hypre_boomeramg_agg_num_paths 1
+
+###Other Options
+-ksp_diagonal_scale
+-pc_lsc_scale_diag
+-fieldsplit_1_pc_lsc_scale_diag
+-ksp_monitor
+-ksp_converged_reason
+-ksp_atol 1e-7
+-ksp_rtol 1e-10
+-ksp_max_it 100000
+-ksp_gmres_restart 500
+-fieldsplit_0_ksp_rtol 1e-6
+-fieldsplit_1_ksp_rtol 1e-2
+-fieldsplit_1_lsc_ksp_rtol 1.0e-2

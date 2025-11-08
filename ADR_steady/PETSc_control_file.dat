@@ -1,0 +1,7 @@
+-ksp_monitor
+-ksp_monitor_true_residual
+-ksp_converged_reason
+-pc_type lu
+-ksp_type preonly
+-ksp_atol 1e-9
+-ksp_rtol 1e-14

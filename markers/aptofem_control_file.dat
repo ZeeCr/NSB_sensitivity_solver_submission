@@ -1,0 +1,54 @@
+# ==========================================================
+# Aptofem Control File
+# ==========================================================
+aptofem_help .false.
+aptofem_pause_code .true.
+aptofem_no_openmp_threads 2
+# ==========================================================
+>>> User_data
+interior_penalty_parameter 10.0
+
+#! Points to space definition
+fe_solution_section FE_Solution_full_system
+
+Re 908.572
+Da_reciprocal 10000.0
+
+time_step 0.3
+
+# ==========================================================
+>>> Mesh_gen
+# Options for geom
+
+problem_dim 3
+
+mesh_file_name mesh.msh
+mesh_file_dir ../data/
+
+# ==========================================================
+>>> Surface_mesh
+surf_mesh_bdry_ids [1]
+# ==========================================================
+>>> FE_Solution_full_system
+fe_space DG(q,1,1,1,0;region=1)
+# ==========================================================
+>>> solver_full_system
+
+quadrature_inc 2
+# ==========================================================
+>>> Output_data
+terminal_output on
+output_directory ./output/
+append_filename NS
+output_file_titles both
+# ==========================================================
+>>> Output_mesh_solution
+output_directory ./output/
+append_filename navier
+fe_output fe_solution
+fe_output_file_type vtk
+variable_1 u
+variable_2 v
+variable_3 w
+variable_4 p
+# ==========================================================
