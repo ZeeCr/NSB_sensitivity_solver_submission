@@ -77,6 +77,6 @@ The colour bars below correspond to flow speed. Images have been resized for rea
 
 <img src="https://github.com/user-attachments/assets/adbba018-7e75-493b-a4c7-dccfc1280d18" alt="Side-on view" width="480" />
 
-### Flow field in placental geometry with a non-symmetrical moving boundary (contraction)
+### Flow field in placental geometry with asymmetrically moving boundary (contraction)
 
-<img src="https://github.com/user-attachments/assets/66fe0c4b-1a1d-4a38-bf59-d1101193d750" alt="Non-symmetrical moving boundary" width="480" />
+<img src="https://github.com/user-attachments/assets/66fe0c4b-1a1d-4a38-bf59-d1101193d750" alt="Asymmetrical moving boundary" width="480" />
