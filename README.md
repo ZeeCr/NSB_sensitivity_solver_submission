@@ -1,6 +1,8 @@
-# NSB_sensitivity (SWIRL)
+# NSB Sensitivity (SWIRL)
 
 This repository contains Fortran codes used for solving the flow and oxygen transport within placental geometries as part of the Wellcome Leap In Utero (SWIRL) project. The PDEs solved for this are unsteady, semi-discretised (BDF) Navier-Stokes-Brinkman (NSB) and steady advection-diffusion-reaction (ADR), respectively. The PDEs and associated biomarker calculations are separated into distinct programs within the subdirectories. Each subdirectory contains Fortran code and a Makefile (running `make` is sufficient within each subdirectory) for building the corresponding executable.
+
+This code is setup to work on geometries and data structures created from the [Idealised Placental Geometry Creation (Gmsh)](https://github.com/ZeeCr/placenta_gmsh) repo.
 
 ## Summary
 
